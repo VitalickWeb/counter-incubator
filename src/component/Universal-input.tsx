@@ -1,27 +1,32 @@
 import React, {ChangeEvent} from 'react';
-import {CounterType} from "../App";
 
 
 export type UniversalInputPropsType = {
     type: string
-    counter: CounterType
-    getIncrementValue: (valueInc: number) => void
+    valueInc: number
+    getIncrementValue?: (valueInc: number) => void
+    className?: string
 }
 
 export const UniversalInput = ({
-                                   type, counter, getIncrementValue
+                                   type,
+                                   valueInc,
+                                   getIncrementValue,
+                                   className,
 }: UniversalInputPropsType) => {
 
-const changeIncrementValue = (evt: ChangeEvent<HTMLInputElement>) => {
-    console.log(evt.currentTarget.value)
-    getIncrementValue(+evt.currentTarget.value)
+const changeIncrementValue = (e: ChangeEvent<HTMLInputElement>) => {
+    getIncrementValue && getIncrementValue(+e.currentTarget.value)
 }
+
+    let style = `${className}`
 
     return (
         <form>
             <input
+                className={style}
                 type={type}
-                value={counter.incValue}
+                value={valueInc}
                 onChange={changeIncrementValue}
             />
         </form>

@@ -1,35 +1,37 @@
 import React from 'react';
 import {UniversalButton} from "./Universal-button";
-import {CounterType} from "../App";
+import {UniversalInput} from "./Universal-input";
 
 export type CounterSettingsPropsType = {
-    numberMax: number
-    numberMin: number
-    counter: CounterType
+    maxValue: number
+    minValue: number
+    settingMaxValue: (maxValue: number) => void
+    settingMinValue: (minValue: number) => void
 }
 
 export const CounterSettings = ({
-                                    numberMax,
-                                    numberMin,
-                                    counter,
+                                    maxValue,
+                                    minValue,
+                                    settingMaxValue,
+                                    settingMinValue,
                                 }: CounterSettingsPropsType) => {
-
 
     return (
         <div>
-            {/*<UniversalInput*/}
-            {/*    type="number"*/}
-            {/*    numberMax={numberMax}*/}
-            {/*/>*/}
+            <UniversalInput
+                type="number"
+                valueInc={maxValue}
+                getIncrementValue={settingMaxValue}
+            />
 
-            {/*<UniversalInput*/}
-            {/*    type="number"*/}
-            {/*    numberMin={numberMin}*/}
-            {/*/>*/}
+            <UniversalInput
+                type="number"
+                valueInc={minValue}
+                getIncrementValue={settingMinValue}
+            />
 
             <UniversalButton
                 nameButton="set"
-                counter={counter}
             />
         </div>
     );

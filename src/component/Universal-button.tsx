@@ -1,22 +1,22 @@
 import React from 'react';
-import {CounterType} from "../App";
 
 export type UniversalButtonPropsType = {
     nameButton: string
     clickIncrement?: () => void
-    counter: CounterType
+    inkDisabled?: boolean
 }
 
-export const UniversalButton = ({nameButton, clickIncrement, counter}: UniversalButtonPropsType) => {
-
-    const clickIncrementChange = () => {
-        clickIncrement && clickIncrement()
-    }
+export const UniversalButton = ({
+                                    nameButton,
+                                    clickIncrement,
+                                    inkDisabled
+}: UniversalButtonPropsType) => {
 
     return (
         <div>
-            <button disabled={counter.disabled}
-                onClick={clickIncrementChange}>{nameButton}
+            <button
+                disabled={inkDisabled && inkDisabled}
+                onClick={clickIncrement}>{nameButton}
             </button>
         </div>
     );
