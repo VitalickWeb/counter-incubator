@@ -1,13 +1,13 @@
 import React from 'react';
 import {UniversalInput} from "../universal-input/Universal-input";
 import {UniversalButton} from "../universal-button/Universal-button";
-import st from './Counter-increment.module.css'
+import st from './Counter-increment.module.css';
 
 
 export type CounterIncrementPropsType = {
     maxValue: number
     valueInc: number
-    getIncrementValue: (valueInc: number) => void
+    getIncrementValue: (valueInc: string) => void
     clickButton: () => void
     resetIncrement: () => void
     disabled: boolean
@@ -33,7 +33,7 @@ export const CounterIncrement = ({
         <div className={st.blockForm}>
             <div className={st.subBlockCounter}>
                 <div className={st.inputInc}>
-                    {wordsFiltered === "error" || wordsFiltered === "save"
+                    {wordsFiltered === "error" || wordsFiltered === "counter setting"
                         ? <div className={styleInput}>{errorMessage}</div>
                         : <UniversalInput
                             className={valueInc >= maxValue ? colored : ""}
@@ -49,7 +49,7 @@ export const CounterIncrement = ({
                         <div className={errorMessage !== "" ? opacity : ""}>
                             <UniversalButton
                                 nameButton="ink"
-                                disabled={wordsFiltered === "" ? false : disabled}
+                                disabled={wordsFiltered === "init" ? false : disabled}
                                 clickButton={clickButton}
                             />
                         </div>
@@ -60,7 +60,7 @@ export const CounterIncrement = ({
                         <div className={errorMessage !== "" ? opacity : ""}>
                             <UniversalButton
                                 nameButton="reset"
-                                disabled={wordsFiltered === "" ? false : disabled}
+                                disabled={wordsFiltered === "init" ? false : disabled}
                                 clickButton={resetIncrement}
                             />
                         </div>

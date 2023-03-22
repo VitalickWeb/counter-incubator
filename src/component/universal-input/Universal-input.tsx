@@ -4,7 +4,7 @@ import React, {ChangeEvent} from 'react';
 export type UniversalInputPropsType = {
     type: string
     valueInc: number
-    getIncrementValue?: (valueInc: number) => void
+    getIncrementValue?: (valueInc: string) => void
     className?: string
 }
 
@@ -16,7 +16,7 @@ export const UniversalInput = ({
 }: UniversalInputPropsType) => {
 
 const changeIncrementValue = (e: ChangeEvent<HTMLInputElement>) => {
-    getIncrementValue && getIncrementValue(+e.currentTarget.value)
+    getIncrementValue && getIncrementValue(e.currentTarget.value)
 }
 
     let style = `${className}`
