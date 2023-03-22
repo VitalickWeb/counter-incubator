@@ -22,14 +22,14 @@ const changeIncrementValue = (e: ChangeEvent<HTMLInputElement>) => {
     let style = `${className}`
 
     return (
-        <form>
+        <>
             <input
                 className={style}
                 type={type}
                 value={valueInc}
                 onChange={changeIncrementValue}
             />
-        </form>
+        </>
     );
 };
 

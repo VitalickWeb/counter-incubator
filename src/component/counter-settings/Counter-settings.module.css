@@ -1,0 +1,119 @@
+.blockSettingForm {
+    border: 2px solid snow;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 25px;
+    padding: 10px;
+    background-color: snow;
+    -webkit-box-shadow: 0px 0px 20px 1px rgba(231, 237, 242, 0.64);
+    -moz-box-shadow: 0px 0px 20px 1px rgba(231, 237, 242, 0.64);
+    box-shadow: 0px 0px 20px 1px rgba(231, 237, 242, 0.64);
+}
+
+
+.blockSettingForm .subBlockSettings {
+    background-color: #666677;
+    padding: 20px 10px 20px 10px;
+    border: 1px solid gold;
+    border-radius: 8px;
+}
+
+.blockSettingForm .blockInput {
+    width: 124%;
+}
+
+.blockSettingForm .blockInput .inputMax {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blockSettingForm .blockInput .inputStart {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputMax .itemText, .inputStart .itemText {
+    color: gold;
+}
+
+.blockSettingForm .blockInput .inputMax input {
+    outline: none;
+    text-align: center;
+    font-weight: bold;
+    color: #677;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: 1px solid gold;
+    width: 50%;
+    -webkit-box-shadow: 0px 0px 18px -5px rgba(91, 99, 116, 0.72) inset;
+    -moz-box-shadow: 0px 0px 18px -5px rgba(91, 99, 116, 0.72) inset;
+    box-shadow: 0px 0px 18px -5px rgba(91, 99, 116, 0.72) inset;
+}
+
+.line {
+    width: 75%;
+    border: 0.5px solid gold;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.blockSettingForm .blockInput .inputStart input {
+    font-weight: bold;
+    outline: none;
+    text-align: center;
+    color: #677;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: 1px solid gold;
+    width: 50%;
+    -webkit-box-shadow: 0px 0px 18px -5px rgba(91, 99, 116, 0.72) inset;
+    -moz-box-shadow: 0px 0px 18px -5px rgba(91, 99, 116, 0.72) inset;
+    box-shadow: 0px 0px 18px -5px rgba(91, 99, 116, 0.72) inset;
+}
+
+.blockSettingForm .blockInput .inputMax input.errorValue {
+    background-color: rgba(255, 20, 20, 0.98);
+    color: white;
+}
+
+.blockSettingForm .blockInput .inputStart input.errorValue {
+    background-color: rgba(255, 20, 20, 0.98);
+    color: white;
+}
+
+.blockSettingForm .buttonSet {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid gold;
+    border-radius: 8px;
+    background-color: #666677;
+}
+
+.blockSettingForm .buttonSet button {
+    width: 54px;
+    height: 24px;
+    border: 1px solid gold;
+    background-color: snow;
+    border-radius: 4px;
+    transition: all ease-in-out 200ms;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: #667;
+}
+
+.blockSettingForm .buttonSet button:hover {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: lightslategrey;
+    color: gold;
+    border: 1px solid gold;
+    transition: all ease-in-out 200ms;
+    cursor: pointer;
+}
+
+.errorButton {
+    opacity: 0.5;
+}

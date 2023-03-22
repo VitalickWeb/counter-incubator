@@ -2,21 +2,21 @@ import React from 'react';
 
 export type UniversalButtonPropsType = {
     nameButton: string
-    clickIncrement?: () => void
-    inkDisabled?: boolean
+    clickButton?: () => void
+    disabled?: boolean
 }
 
 export const UniversalButton = ({
                                     nameButton,
-                                    clickIncrement,
-                                    inkDisabled
+                                    clickButton,
+                                    disabled,
 }: UniversalButtonPropsType) => {
 
     return (
         <div>
             <button
-                disabled={inkDisabled && inkDisabled}
-                onClick={clickIncrement}>{nameButton}
+                disabled={disabled && disabled}
+                onClick={clickButton}>{nameButton}
             </button>
         </div>
     );

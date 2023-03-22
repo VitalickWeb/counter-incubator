@@ -1,72 +1,89 @@
 import React, {useState} from 'react';
 import './App.css';
-import {CounterIncrement} from "./component/Counter-increment";
-import {CounterSettings} from "./component/Counter-settings";
+import {CounterIncrement} from "./component/counter/Counter-increment";
+import {CounterSettings} from "./component/counter-settings/Counter-settings";
+
+export type WordFilter = "" | "error" | "save" | "Incorrect value!" | "Enter values and press 'save'"
 
 export type CounterType = {
     numberMax: number
     numberMin: number
     incValue: number
     disabled: boolean
-    message: Array<string>
-    error: boolean
+    message: string
+    wordsFiltered: WordFilter
 }
 
 function App() {
     const [counter, setCounter] = useState<CounterType>({
         numberMax: 5,
-        numberMin: 1,
+        numberMin: 0,
         incValue: 0,
         disabled: false,
-        message: ["error", "Incorrect value", "enter values and press 'set'"],
-        error: false
+        message: "" ,
+        wordsFiltered: "" as WordFilter,
     })
 
+console.log(counter)
     const settingMaxValue = (maxValue: number) => {
-        setCounter({...counter, numberMax: maxValue})
+        if (maxValue <= 0 || maxValue <= counter.numberMin || counter.numberMin < 0) {
+            setCounter({...counter, wordsFiltered: "error", message: "Incorrect value!", disabled: true, numberMax: maxValue})
+        } else {
+            setCounter({...counter, message: "Enter values and press 'save'", wordsFiltered: "save", disabled: true, numberMax: maxValue})
+        }
     }
 
     const settingMinValue = (minValue: number) => {
-        setCounter({...counter, numberMin: minValue})
+        if (minValue < 0 || minValue >= counter.numberMax) {
+            setCounter({...counter, wordsFiltered: "error", message: "Incorrect value!", disabled: true, numberMin: minValue})
+        } else {
+            setCounter({...counter, message: "Enter values and press 'save'", wordsFiltered: "save", disabled: true, numberMin: minValue, incValue: 0})
+        }
     }
 
     const getIncrementValue = (valueInc: number) => {
-        setCounter({...counter, incValue: valueInc})
+        if (counter.numberMax > 0 || counter.numberMax > counter.numberMin) {
+            setCounter({...counter, incValue: valueInc})
+        }
+    }
+
+    const saveSettings = () => {
+        setCounter({...counter, incValue: counter.numberMin, message: "", wordsFiltered: ""})
     }
 
     const clickIncrement = () => {
-        if (counter.incValue <= counter.numberMax) {
+        if (counter.incValue < counter.numberMax) {
             setCounter({...counter, incValue: counter.incValue + 1})
-
-            if (counter.incValue >= counter.numberMax) {
-                setCounter({...counter, disabled: counter.disabled === true})
-                // setCounter({...counter, message: counter.message})
-            }
-        } else {
-
         }
     }
+
     const resetIncrement = () => {
-        setCounter({...counter, incValue: counter.incValue && 0})
+        setCounter({...counter, incValue: counter.numberMin})
     }
 
     return (
         <div className="App">
-            <CounterSettings
-                maxValue={counter.numberMax}
-                minValue={counter.numberMin}
-                settingMaxValue={settingMaxValue}
-                settingMinValue={settingMinValue}
-            />
-            <CounterIncrement
-                maxValue={counter.numberMax}
-                valueInc={counter.incValue}
-                inkDisabled={counter.disabled}
-                errorMessage={counter.message[1]}
-                getIncrementValue={getIncrementValue}
-                clickIncrement={clickIncrement}
-                resetIncrement={resetIncrement}
-            />
+            <div className="mainContainer">
+                <CounterSettings
+                    maxValue={counter.numberMax}
+                    minValue={counter.numberMin}
+                    disabled={counter.disabled}
+                    wordsFiltered={counter.wordsFiltered}
+                    settingMaxValue={settingMaxValue}
+                    settingMinValue={settingMinValue}
+                    clickButton={saveSettings}
+                />
+                <CounterIncrement
+                    maxValue={counter.numberMax}
+                    wordsFiltered={counter.wordsFiltered}
+                    errorMessage={counter.message}
+                    valueInc={counter.incValue}
+                    disabled={counter.disabled}
+                    getIncrementValue={getIncrementValue}
+                    clickButton={clickIncrement}
+                    resetIncrement={resetIncrement}
+                />
+            </div>
         </div>
     );
 }

@@ -1,0 +1,149 @@
+.blockForm {
+    border: 2px solid snow;
+    height: auto;
+    border-radius: 8px;
+    margin-left: 25px;
+    padding: 10px;
+    background-color: snow;
+    -webkit-box-shadow: 0px 0px 20px 1px rgba(231, 237, 242, 0.64);
+    -moz-box-shadow: 0px 0px 20px 1px rgba(231, 237, 242, 0.64);
+    box-shadow: 0px 0px 20px 1px rgba(231, 237, 242, 0.64);
+}
+
+.subBlockCounter {
+    border-radius: 8px;
+}
+
+.inputInc input {
+    max-width: 295px;
+    padding: 30px 0 36px 0;
+    text-align: center;
+    outline: none;
+    background-color: #666677;
+    color: gold;
+    height: 100px;
+    border: 1px solid gold;
+    border-radius: 8px;
+    font-size: 34px;
+    box-sizing: border-box;
+}
+
+.inputIncorrect {
+    max-width: 295px;
+    padding: 30px 0 36px 0;
+    text-align: center;
+    outline: none;
+    background-color: #666677;
+    height: 100px;
+    border: 1px solid gold;
+    border-radius: 8px;
+    font-size: 26px;
+    line-height: 24px;
+    color: rgba(255, 66, 66, 0.82);
+    box-sizing: border-box;
+}
+
+.inputCorrect {
+    max-width: 295px;
+    padding: 30px 0 36px 0;
+    text-align: center;
+    outline: none;
+    background-color: #666677;
+    height: 100px;
+    border: 1px solid gold;
+    border-radius: 8px;
+    font-size: 26px;
+    line-height: 24px;
+    color: gold;
+    box-sizing: border-box;
+}
+
+.blockForm .blockButtons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+.blockForm .blockButtonInc .buttonInc {
+    background-color: #666677;
+    padding: 10px 40px 10px 40px;
+    border: 1px solid gold;
+    border-radius: 8px;
+    margin-right:  10px;
+    box-sizing: border-box;
+}
+
+.blockForm .blockButtonRes .buttonReset {
+    background-color: #666677;
+    padding: 10px 42px 10px 42px;
+    border: 1px solid gold;
+    border-radius: 8px;
+}
+
+.blockForm .blockButtonInc .buttonInc button {
+    width: 54px;
+    height: 24px;
+    border: 1px solid gold;
+    background-color: snow;
+    border-radius: 4px;
+    transition: all ease-in-out 200ms;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: #667;
+}
+
+.blockForm .blockButtonInc button:hover {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: lightslategrey;
+    color: gold;
+    border: 1px solid gold;
+    transition: all ease-in-out 200ms;
+    cursor: pointer;
+}
+
+.blockForm .blockButtonRes .buttonReset button {
+    width: auto;
+    height: 24px;
+    border: 1px solid gold;
+    background-color: snow;
+    border-radius: 4px;
+    transition: all ease-in-out 200ms;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: #667;
+}
+
+.test {
+    width: auto;
+    height: 24px;
+    border: 1px solid gold;
+    background-color: snow;
+    border-radius: 4px;
+    transition: all ease-in-out 200ms;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: #667;
+}
+
+button:hover {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: lightslategrey;
+    color: gold;
+    border: 1px solid gold;
+    transition: all ease-in-out 200ms;
+    cursor: pointer;
+}
+
+.disabled {
+    opacity: 0.5;
+}
+.inputInc input.innerInput {
+    color: rgba(255, 66, 66, 0.82);
+    outline: none;
+}
