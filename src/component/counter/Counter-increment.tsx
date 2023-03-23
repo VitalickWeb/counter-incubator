@@ -26,7 +26,7 @@ export const CounterIncrement = ({
 }: CounterIncrementPropsType) => {
     console.log(wordsFiltered)
     let colored = `${st.innerInput}`
-    let opacity = `${disabled && st.disabled}`
+    let opacity = `${st.disabled}`
     let styleInput = `${wordsFiltered === "error" ? st.inputIncorrect : st.inputCorrect}`
 
     return (
@@ -46,7 +46,7 @@ export const CounterIncrement = ({
             <div className={st.blockButtons}>
                 <div className={st.blockButtonInc}>
                     <div className={st.buttonInc}>
-                        <div className={errorMessage !== "" ? opacity : ""}>
+                        <div className={errorMessage !== "" || valueInc >= maxValue ? opacity : ""}>
                             <UniversalButton
                                 nameButton="ink"
                                 disabled={wordsFiltered === "init" ? false : disabled}
