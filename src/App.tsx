@@ -1,11 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import {CounterIncrement} from "./component/counter/Counter-increment";
 import {CounterSettings} from "./component/counter-settings/Counter-settings";
+import {
+    clickIncrementAC,
+    getIncrementValueAC,
+    resetIncrementAC,
+    saveSettingsAC,
+    settingMaxValueAC,
+    settingMinValueAC
+} from "./state/counter-reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "./state/store";
 
 export type StatusType = "init" | "error" | "counter setting"
 
-export type CounterType = {
+export type CounterStateType = {
     numberMax: number
     numberMin: number
     incValue: number
@@ -15,50 +25,26 @@ export type CounterType = {
 }
 
 function App() {
-    const [counter, setCounter] = useState<CounterType>({
-        numberMax: 5,
-        numberMin: 0,
-        incValue: 0,
-        disabled: false,
-        message: "" ,
-        status: "init" as StatusType,
-    })
+    const counter = useSelector<AppRootStateType, CounterStateType>(state => state.counter)
+    const dispatch = useDispatch()
 
-console.log(counter)
     const settingMaxValue = (maxValue: string) => {
-        if (+maxValue <= 0 || +maxValue <= counter.numberMin || counter.numberMin < 0) {
-            setCounter({...counter, status: "error", message: "Incorrect value!", disabled: true, numberMax: +maxValue})
-        } else {
-            setCounter({...counter, message: "Enter values and press 'save'", status: "counter setting", disabled: true, numberMax: +maxValue})
-        }
+        dispatch(settingMaxValueAC(maxValue))
     }
-
     const settingMinValue = (minValue: string) => {
-        if (+minValue < 0 || +minValue >= counter.numberMax) {
-            setCounter({...counter, status: "error", message: "Incorrect value!", disabled: true, numberMin: +minValue})
-        } else {
-            setCounter({...counter, message: "Enter values and press 'save'", status: "counter setting", disabled: true, numberMin: +minValue, incValue: 0})
-        }
+        dispatch(settingMinValueAC(minValue))
     }
-
     const getIncrementValue = (valueInc: string) => {
-        if (counter.numberMax > 0 || counter.numberMax > counter.numberMin) {
-            setCounter({...counter, incValue: +valueInc})
-        }
+        dispatch(getIncrementValueAC(valueInc))
     }
-
     const saveSettings = () => {
-        setCounter({...counter, incValue: counter.numberMin, message: "", status: "init"})
+        dispatch(saveSettingsAC())
     }
-
     const clickIncrement = () => {
-        if (counter.incValue < counter.numberMax) {
-            setCounter({...counter, incValue: counter.incValue + 1})
-        }
+        dispatch(clickIncrementAC())
     }
-
     const resetIncrement = () => {
-        setCounter({...counter, incValue: counter.numberMin})
+        dispatch(resetIncrementAC())
     }
 
     return (

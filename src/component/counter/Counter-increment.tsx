@@ -24,7 +24,7 @@ export const CounterIncrement = ({
                                      errorMessage,
                                      wordsFiltered,
 }: CounterIncrementPropsType) => {
-    console.log(wordsFiltered)
+
     let colored = `${st.innerInput}`
     let opacity = `${st.disabled}`
     let styleInput = `${wordsFiltered === "error" ? st.inputIncorrect : st.inputCorrect}`
