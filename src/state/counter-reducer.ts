@@ -25,8 +25,6 @@ export type ActionsType = settingMaxValueAT |
                         resetIncrementAT
 
 export const counterReducer = (state: CounterStateType = initialState, action: ActionsType): CounterStateType =>  {
-    console.log(state)
-    console.log(action)
     switch (action.type) {
         case 'SETTING-MAX-VALUE': {
             return +action.maxValue <= 0 || +action.maxValue <= state.numberMin || state.numberMin < 0
